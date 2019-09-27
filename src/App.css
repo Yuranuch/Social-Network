@@ -16,5 +16,13 @@
 .container {
   display: flex;
 }
-
+.content {
+    background-color: indianred;
+    width: 70%;
+    text-align: left;
+}
+.content img {
+    width: 100%;
+    height:150px;
+}
 
