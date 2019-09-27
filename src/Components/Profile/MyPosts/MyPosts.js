@@ -18,8 +18,9 @@ const MyPosts =()=> {
                 New Posts
             </div>
             <div>
-                <Post/>
-                <Post/>
+                <Post message="Hi" likes="15"/>
+                <Post message="Hello" likes="5"/>
+                <Post message="Good" likes="0"/>
             </div>
         </div>
     );
