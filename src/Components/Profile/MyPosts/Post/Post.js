@@ -8,7 +8,7 @@ const Post = (props) => {
         <div className={styles.post}>
             <img src="http://gloria-mur.ru/wp-content/uploads/2017/05/avatar1-740x463.jpg"/>
             <div>{props.message}</div>
-            <span>likes {props.likes}</span>
+            <span>likes {props.likesCount}</span>
         </div>
 
     );

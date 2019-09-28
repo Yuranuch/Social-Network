@@ -4,6 +4,13 @@ import Post from "./Post/Post";
 
 const MyPosts =()=> {
 
+    const PostsData = [
+        {message:"Hi to all", likesCount: 15},
+        {message:"Hello", likesCount: 5},
+        {message:"Good", likesCount: 0}
+    ]
+    const postsElements = PostsData.map(p=><Post message={p.message} likesCount={p.likesCount}/>)
+
     return (
         <div>
             My Posts
@@ -12,15 +19,12 @@ const MyPosts =()=> {
                 <div>
                      <button>Add Post</button>
                 </div>
-
             </div>
             <div>
                 New Posts
             </div>
             <div>
-                <Post message="Hi" likes="15"/>
-                <Post message="Hello" likes="5"/>
-                <Post message="Good" likes="0"/>
+                {postsElements}
             </div>
         </div>
     );

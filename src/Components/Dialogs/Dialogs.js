@@ -2,6 +2,7 @@ import React from 'react';
 import '../../App.css';
 import styles from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
+import Message from "./Message/Message";
 
 const Dialogs =(props)=> {
 
@@ -10,28 +11,25 @@ const Dialogs =(props)=> {
         {id: 1, name: "Genya"},
         {id: 2, name: "Natasha"}
     ]
-    const DialogsElements = dialogsItems.map(d => <DialogsItem id={d.id} name={d.name}/>)
+    let PostsData = [
+        {id: 0, message: "Hi"},
+        {id: 1, message: "Hello all"},
+        {id: 2, message: "How are you?"}
+    ]
 
+
+
+
+    const dialogsElements = dialogsItems.map(d => <DialogsItem id={d.id} name={d.name}/>)
+    const messageElements = PostsData.map (m=> <Message id={m.id} message={m.message} />)
     return (
         <div className={styles.dialogs}>
            <div className={styles.dialogs_items}>
-               {DialogsElements}
+               {dialogsElements}
            </div>
 
-
-
-
             <div className={styles.messages}>
-                <div className={styles.message}>
-                    Hello
-                </div>
-                <div className={styles.message}>
-                    Hello haw are you&
-                </div>
-                <div className={styles.message}>
-                    I am fine
-                </div>
-
+                {messageElements}
             </div>
         </div>
     );
