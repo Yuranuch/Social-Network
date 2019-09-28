@@ -1,9 +1,9 @@
 import React from 'react';
 import Post from "./Post/Post";
+import {connect} from "react-redux";
 
 
 const MyPosts =()=> {
-
     const PostsData = [
         {message:"Hi to all", likesCount: 15},
         {message:"Hello", likesCount: 5},
@@ -31,5 +31,14 @@ const MyPosts =()=> {
 
 }
 
-export default MyPosts;
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+
+const MyPostsContainer = connect (mapStateToProps)(MyPosts)
+
+export default MyPostsContainer;
 
