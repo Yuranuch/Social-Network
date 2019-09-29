@@ -1,7 +1,7 @@
 
 
 const initialState = {
-    PostsData : [
+    postsData : [
         {message:"Hi to all", likesCount: 15},
         {message:"Hello", likesCount: 5},
         {message:"Good", likesCount: 0}

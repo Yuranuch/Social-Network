@@ -3,13 +3,8 @@ import Post from "./Post/Post";
 import {connect} from "react-redux";
 
 
-const MyPosts =()=> {
-    const PostsData = [
-        {message:"Hi to all", likesCount: 15},
-        {message:"Hello", likesCount: 5},
-        {message:"Good", likesCount: 0}
-    ]
-    const postsElements = PostsData.map(p=><Post message={p.message} likesCount={p.likesCount}/>)
+const MyPosts =(props)=> {
+    const postsElements = props.postsData.map(p=><Post message={p.message} likesCount={p.likesCount}/>)
 
     return (
         <div>
@@ -32,8 +27,9 @@ const MyPosts =()=> {
 }
 
 const mapStateToProps = (state) => {
+    debugger
     return {
-
+        postsData: state.profilePage.state.postsData
     }
 }
 
