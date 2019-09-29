@@ -1,18 +1,29 @@
 import React from 'react';
 import Post from "./Post/Post";
 import {connect} from "react-redux";
+import {addNewPost, changePostText} from "../../../redux/profile-reducer";
+
 
 
 const MyPosts =(props)=> {
     const postsElements = props.postsData.map(p=><Post message={p.message} likesCount={p.likesCount}/>)
 
+    const addNewPost = () => {
+        props.addNewPost()
+    }
+
+    const onPostTextChange = (e) => {
+        const newText = e.currentTarget.value
+        props.changePostText(newText)
+    }
+
     return (
         <div>
             My Posts
             <div>
-                <textarea/>
+                <textarea onChange={onPostTextChange} value={props.firstPostValue}/>
                 <div>
-                     <button>Add Post</button>
+                     <button onClick={addNewPost}>Add Post</button>
                 </div>
             </div>
             <div>
@@ -27,14 +38,25 @@ const MyPosts =(props)=> {
 }
 
 const mapStateToProps = (state) => {
-    debugger
     return {
-        postsData: state.profilePage.state.postsData
+        postsData: state.profilePage.postsData,
+        firstPostValue: state.profilePage.firstPostValue
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addNewPost : () => {
+          dispatch(addNewPost())
+        },
+        changePostText: (newText)=> {
+            dispatch(changePostText(newText))
+        }
     }
 }
 
 
-const MyPostsContainer = connect (mapStateToProps)(MyPosts)
+const MyPostsContainer = connect (mapStateToProps,mapDispatchToProps)(MyPosts)
 
 export default MyPostsContainer;
 
