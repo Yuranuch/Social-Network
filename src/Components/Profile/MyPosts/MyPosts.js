@@ -6,7 +6,7 @@ import {addNewPost, changePostText} from "../../../redux/profile-reducer";
 
 
 const MyPosts =(props)=> {
-    const postsElements = props.postsData.map(p=><Post message={p.message} likesCount={p.likesCount}/>)
+    const postsElements = props.postsData.map(p=><Post message={p.message} likesCount={p.likesCount} id={props.nextPostId}/>)
 
     const addNewPost = () => {
         props.addNewPost()
@@ -40,7 +40,8 @@ const MyPosts =(props)=> {
 const mapStateToProps = (state) => {
     return {
         postsData: state.profilePage.postsData,
-        firstPostValue: state.profilePage.firstPostValue
+        firstPostValue: state.profilePage.firstPostValue,
+        nextPostId: state.profilePage.nextPostId
     }
 }
 

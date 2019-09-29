@@ -7,7 +7,9 @@ const initialState = {
         {message:"Hello", likesCount: 5},
         {message:"Good", likesCount: 0}
     ],
-    firstPostValue: "post me"
+    firstPostValue: "post me",
+    nextPostId: 3,
+    clearMessage: ""
 }
 
 export const profileReducer = (state=initialState, action) => {
@@ -15,7 +17,8 @@ export const profileReducer = (state=initialState, action) => {
         case ADD_NEW_POST: {
             return {
                 ...state,
-                postsData : [...state.postsData,{message: state.firstPostValue, likesCount: 15} ]
+                postsData : [...state.postsData,{id: state.nextPostId++, message: state.firstPostValue, likesCount: 15} ],
+                firstPostValue: state.clearMessage
             }
         }
         case CHANGE_POST_TEXT: {
