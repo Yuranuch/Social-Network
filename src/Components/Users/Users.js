@@ -1,11 +1,15 @@
 import React from "react"
 import styles from './Users.module.css'
+import * as axios from "axios";
 const Users =(props) => {
     if(props.users.length===0) {
-    props.setUsers(
 
+        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+            .then(response=>{
 
-    )}
+                props.setUsers(response.data.items)
+            }
+            )}
     let onFollowMe = (userId) => {
         props.userFollow(userId)
     }
@@ -15,8 +19,9 @@ const Users =(props) => {
 
     return <div className={styles.usersWrap}>{
                 props.users.map(u => <div key={u.id} className={styles.user}>
-                    <div><img src={u.photo}/></div>
-                    <div>{u.userName}</div>
+                    <div>{u.id}</div>
+                    <div><img src={u.photos.small != null? u.photos.small: "https://i.pinimg.com/236x/a0/c1/44/a0c14433c34cc9775fe5ff930f6b14a2.jpg"}/></div>
+                    <div>{u.name}</div>
                     <div>{u.status}</div>
                     {!u.follow?<button onClick={()=> {onFollowMe(u.id)}}>Follow</button>:
                     <button onClick={()=> {onUnFollowMe(u.id)}}>UnFollow</button>}
