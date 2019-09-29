@@ -3,8 +3,6 @@ import '../../App.css';
 import styles from './Dialogs.module.css'
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
-import {connect} from "react-redux";
-import {addNewMessage, changeMessage} from "../../redux/dialog-reducer";
 
 const Dialogs =(props)=> {
 
@@ -42,27 +40,5 @@ const Dialogs =(props)=> {
     );
 }
 
-const mapStateToProps =(state)=> {
-
-    return{
-        dialogsData: state.dialogsPage.dialogsData,
-        messageData: state.dialogsPage.messageData,
-        newMessage: state.dialogsPage.newMessage,
-        newMessageId: state.dialogsPage.newMessageId
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addNewMessage: ()=> {
-            dispatch(addNewMessage())
-        },
-        changeMessage: (newMessageText) => {
-            dispatch(changeMessage(newMessageText))
-        }
-    }
-}
-
-const DialogContainer = connect (mapStateToProps,mapDispatchToProps)(Dialogs)
-
-export default DialogContainer;
+export default Dialogs;
 

@@ -3,10 +3,9 @@ import './App.css';
 import Header from "./Components/Header/Header";
 import Profile from "./Components/Profile/Profile";
 import Navbar from "./Components/Navbar/Navbar";
-import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-
 import UsersContainer from "./Components/Users/UsersContainer";
+import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 
 
 const App = () => {
@@ -19,7 +18,7 @@ const App = () => {
                         <Navbar/>
                         <div className="content">
                             <Route path="/profile" component={Profile}/>
-                            <Route path="/dialogs" component={Dialogs}/>
+                            <Route path="/dialogs" component={DialogsContainer}/>
                             <Route path="/users" component={UsersContainer}/>
                         </div>
                     </div>
