@@ -4,9 +4,9 @@ export const SET_USERS = "SET_USERS"
 
 const initialState = {
     users: [
-        {id: 0, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Yura", follow: true, status: "I'm a boss", location: {city: "Minsk"}},
-        {id: 1, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Sasha", follow: false, status: "I'm a boss too", location: {city: "Brest"}},
-        {id: 2, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Andrey", follow: false, status: "I'm a boss", location: {city: "Vitebsk"}},
+        // {id: 0, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Yura", follow: true, status: "I'm a boss", location: {city: "Minsk"}},
+        // {id: 1, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Sasha", follow: false, status: "I'm a boss too", location: {city: "Brest"}},
+        // {id: 2, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Andrey", follow: false, status: "I'm a boss", location: {city: "Vitebsk"}},
     ]
 }
 
