@@ -1,5 +1,6 @@
 export const FOLLOW = "FOLLOW"
 export const UNFOLLOW = "UNFOLLOW"
+export const SET_USERS = "SET_USERS"
 
 const initialState = {
     users: [
@@ -31,12 +32,19 @@ export const usersReducer = (state=initialState,action) => {
                 })
             }
         }
+        case SET_USERS:{
+            return{
+                ...state,
+                users: [...state.users, ...action.users]
+            }
+        }
     }
     return state
 }
 
 export const userFollow = (userId) => ({type: FOLLOW, userId})
 export const userUnFollow = (userId) => ({type: UNFOLLOW, userId})
+export const setUsers = (users) => ({type:SET_USERS, users})
 
 
 

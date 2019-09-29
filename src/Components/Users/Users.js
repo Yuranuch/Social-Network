@@ -1,9 +1,6 @@
 import React from "react"
-import {connect} from "react-redux";
 import styles from './Users.module.css'
-import {userFollow, userUnFollow} from "../../redux/users-reducer";
 const Users =(props) => {
-
     let onFollowMe = (userId) => {
         props.userFollow(userId)
     }
@@ -24,23 +21,5 @@ const Users =(props) => {
     </div>
 }
 
-const mapStateToProps=(state) => {
-    return {
-        users: state.usersPage.users
 
-    }
-}
-const mapDispatchToProps = (dispatch) => {
-    return {
-        userFollow: (userId) => {
-            dispatch(userFollow(userId))
-        },
-        userUnFollow: (userId) => {
-            dispatch(userUnFollow(userId))
-        }
-    }
-}
-
-const UsersContainer = connect (mapStateToProps, mapDispatchToProps)(Users)
-
-export default UsersContainer
+export default Users
