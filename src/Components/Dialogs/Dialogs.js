@@ -9,9 +9,6 @@ import {addNewMessage, changeMessage} from "../../redux/dialog-reducer";
 const Dialogs =(props)=> {
 
     const onAddNewMessage = () => {
-
-
-
         props.addNewMessage()
     }
 
