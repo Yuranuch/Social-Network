@@ -1,13 +1,13 @@
 export const FOLLOW = "FOLLOW"
 export const UNFOLLOW = "UNFOLLOW"
 export const SET_USERS = "SET_USERS"
+export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
 
 const initialState = {
-    users: [
-        // {id: 0, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Yura", follow: true, status: "I'm a boss", location: {city: "Minsk"}},
-        // {id: 1, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Sasha", follow: false, status: "I'm a boss too", location: {city: "Brest"}},
-        // {id: 2, photo: "https://klike.net/uploads/posts/2019-03/1551511801_1.jpg", userName: "Andrey", follow: false, status: "I'm a boss", location: {city: "Vitebsk"}},
-    ]
+    users: [],
+    totalCount: 0,
+    pageSize: 5,
+    currentPage: 1
 }
 
 export const usersReducer = (state=initialState,action) => {
@@ -38,6 +38,12 @@ export const usersReducer = (state=initialState,action) => {
                 users: [...state.users, ...action.users]
             }
         }
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPage: action.selectedPage
+            }
+        }
     }
     return state
 }
@@ -45,6 +51,6 @@ export const usersReducer = (state=initialState,action) => {
 export const userFollow = (userId) => ({type: FOLLOW, userId})
 export const userUnFollow = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type:SET_USERS, users})
-
+export const setCurrentPage = (selectedPage) => ({type:SET_CURRENT_PAGE, selectedPage})
 
 
