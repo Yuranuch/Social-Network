@@ -1,7 +1,7 @@
 import React from "react"
 import styles from './Users.module.css'
 import * as axios from "axios";
-class Users extends React.Component {
+class UsersAPIComponent extends React.Component {
 
     componentDidMount() {
         if(this.props.users.length===0) {
@@ -58,4 +58,4 @@ render = () => {
 }
 
 
-export default Users
+export default UsersAPIComponent
