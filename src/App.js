@@ -2,15 +2,16 @@ import React from 'react';
 import './App.css';
 import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
-import {BrowserRouter, Route} from "react-router-dom";
+
 import UsersContainer from "./Components/Users/UsersContainer";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
+import {Route} from "react-router-dom";
 
 
 const App = () => {
     return (
-        <BrowserRouter>
+
             <div className="App">
                 <div className="App-Wrapper">
                     <Header/>
@@ -18,7 +19,7 @@ const App = () => {
                         <Navbar/>
                         <div className="content">
 
-                            <Route path="/profile"
+                            <Route path="/profile/:userId?"
                                   render={()=> <ProfileContainer/>} />
                             <Route path="/dialogs"
                                    render={()=> <DialogsContainer />} />
@@ -28,7 +29,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
-        </BrowserRouter>
+
     );
 }
 
