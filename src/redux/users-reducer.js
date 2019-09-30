@@ -55,7 +55,12 @@ export const usersReducer = (state=initialState,action) => {
                 totalCount: action.totalCount
             }
         }
-
+        case TOGGLE_IS_FETCHING: {
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+        }
 
 
     }
