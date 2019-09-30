@@ -1,5 +1,6 @@
 export const CHANGE_POST_TEXT="CHANGE_POST_TEXT"
 export const ADD_NEW_POST ="ADD_NEW_POST"
+export const SET_PROFILE = "SET_PROFILE"
 
 const initialState = {
     postsData : [
@@ -9,7 +10,8 @@ const initialState = {
     ],
     firstPostValue: "post me",
     nextPostId: 3,
-    clearMessage: ""
+    clearMessage: "",
+    profile: null
 }
 
 export const profileReducer = (state=initialState, action) => {
@@ -27,7 +29,12 @@ export const profileReducer = (state=initialState, action) => {
                 firstPostValue: action.newText
             }
         }
-
+        case SET_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            }
+        }
 
     }
     return state
@@ -35,3 +42,4 @@ export const profileReducer = (state=initialState, action) => {
 
 export const addNewPost = () => ({type: ADD_NEW_POST})
 export const changePostText = (newText) => ({type:CHANGE_POST_TEXT, newText})
+export const setProfile = (profile) => ({type:SET_PROFILE, profile})

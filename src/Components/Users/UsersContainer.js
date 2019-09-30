@@ -11,6 +11,7 @@ import {
 import * as axios from "axios";
 import Users from "./Users";
 import preloader from "./../../assets/images/giphy.gif"
+import Preloader from "../common/preloader/preloader";
 
 class UsersContainer extends React.Component {
 
@@ -42,7 +43,7 @@ class UsersContainer extends React.Component {
     render = () => {
 
         return <>
-            {this.props.isFetching?<img src={preloader}/>:null}
+            {this.props.isFetching?<Preloader/>:null}
             <Users {...this.props} onSelectPage={this.onSelectPage}/>
             </>
 
