@@ -1,9 +1,10 @@
 import React from "react"
 import styles from "./Users.module.css";
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
+
 
 const Users =(props)=> {
-
 
     const onFollowMe = (userId) => {
         props.userFollow(userId)
@@ -34,11 +35,35 @@ const Users =(props)=> {
             </div>
             <div>{u.name}</div>
             <div>{u.status}</div>
-            {!u.follow ? <button onClick={() => {onFollowMe(u.id)}}>Follow</button> :
-                <button onClick={() => {onUnFollowMe(u.id)}}>UnFollow</button>}
+            {u.follow ? <button onClick={() => {
+                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+                    {withCredentials:true, headers:{"API-KEY":"2712bbc4-99c4-4494-954c-6bd0564807d4"}})
+
+                    .then(response=> {
+                        debugger
+                        if(response.data.resultCode===0) {
+
+                            onUnFollowMe(u.id)
+
+                        }
+                    })
+
+               }}>UnFollow</button> :
+                <button onClick={() => {
+                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
+                        {withCredentials:true, headers:{"API-KEY":"2712bbc4-99c4-4494-954c-6bd0564807d4"}})
+                        .then(response=> {
+                            if(response.data.resultCode===0){
+                                onFollowMe(u.id)
+                            }
+                        })
+
+                }}>Follow</button>}
         </div> )}
 
     </div>
 }
 
 export default Users
+
+// <button onClick={() => {onUnFollowMe(u.id)}}>UnFollow</button>
