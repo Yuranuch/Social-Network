@@ -18,9 +18,12 @@ const App = () => {
                         <Navbar/>
                         <div className="content">
 
-                            <Route path="/profile" component={ProfileContainer}/>
-                            <Route path="/dialogs" component={DialogsContainer}/>
-                            <Route path="/users" component={UsersContainer}/>
+                            <Route path="/profile"
+                                  render={()=> <ProfileContainer/>} />
+                            <Route path="/dialogs"
+                                   render={()=> <DialogsContainer />} />
+                            <Route path="/users"
+                                   render={()=> <UsersContainer />}/>
                         </div>
                     </div>
                 </div>
