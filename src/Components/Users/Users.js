@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
+import {followMe, UnfollowMe} from "../../API/api";
 
 
 const Users =(props)=> {
@@ -36,11 +37,9 @@ const Users =(props)=> {
             <div>{u.name}</div>
             <div>{u.status}</div>
             {u.follow ? <button onClick={() => {
-                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
-                    {withCredentials:true, headers:{"API-KEY":"2712bbc4-99c4-4494-954c-6bd0564807d4"}})
-
+                    UnfollowMe(u.id)
                     .then(response=> {
-                        debugger
+
                         if(response.data.resultCode===0) {
 
                             onUnFollowMe(u.id)
@@ -50,8 +49,7 @@ const Users =(props)=> {
 
                }}>UnFollow</button> :
                 <button onClick={() => {
-                    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
-                        {withCredentials:true, headers:{"API-KEY":"2712bbc4-99c4-4494-954c-6bd0564807d4"}})
+                    followMe(u.id)
                         .then(response=> {
                             if(response.data.resultCode===0){
                                 onFollowMe(u.id)
