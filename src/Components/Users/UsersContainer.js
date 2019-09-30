@@ -1,6 +1,13 @@
 import React from "react"
 import {connect} from "react-redux";
-import {setCurrentPage, setTotalCount, setUsers, userFollow, userUnFollow} from "../../redux/users-reducer";
+import {
+    setCurrentPage,
+    setTotalCount,
+    setUsers,
+    toggleIsFetching,
+    userFollow,
+    userUnFollow
+} from "../../redux/users-reducer";
 
 import * as axios from "axios";
 import Users from "./Users";
@@ -9,8 +16,10 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         if(this.props.users.length===0) {
+            this.props.toggleIsFetching(true)
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
                 .then(response => {
+                    this.props.toggleIsFetching(false)
                         this.props.setUsers(response.data.items)
                         this.props.setTotalCount(response.data.totalCount)
                     }
@@ -30,7 +39,10 @@ class UsersContainer extends React.Component {
 
     render = () => {
 
-        return <Users {...this.props} onSelectPage={this.onSelectPage}/>
+        return <>
+            {/*{this.props.isFetching?}*/}
+            <Users {...this.props} onSelectPage={this.onSelectPage}/>
+            </>
 
 
     }
@@ -41,7 +53,8 @@ const mapStateToProps=(state) => {
         users: state.usersPage.users,
         totalCount: state.usersPage.totalCount,
         pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage. currentPage,
+        currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -60,6 +73,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setTotalCount: (totalCount)=> {
             dispatch(setTotalCount(totalCount))
+        },
+        toggleIsFetching: (isFetching) => {
+            dispatch(toggleIsFetching(isFetching))
         }
     }
 }
