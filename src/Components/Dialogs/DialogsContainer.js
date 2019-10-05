@@ -3,8 +3,9 @@ import '../../App.css';
 import {connect} from "react-redux";
 import {addNewMessage, changeMessage} from "../../redux/dialog-reducer";
 import Dialogs from "./Dialogs";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-
+let AuthRedirectComponent = withAuthRedirect(Dialogs)
 
 const mapStateToProps =(state)=> {
 
@@ -27,6 +28,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect (mapStateToProps,mapDispatchToProps)(Dialogs)
+export default connect (mapStateToProps,mapDispatchToProps)(AuthRedirectComponent)
 
 
