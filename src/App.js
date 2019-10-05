@@ -10,8 +10,6 @@ import {Route} from "react-router-dom";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
 
-
-
 const App = () => {
     return (
 
@@ -33,7 +31,6 @@ const App = () => {
                     </div>
                 </div>
             </div>
-
     );
 }
 
