@@ -1,3 +1,5 @@
+import {usersAPI} from "../API/api";
+
 export const FOLLOW = "FOLLOW"
 export const UNFOLLOW = "UNFOLLOW"
 export const SET_USERS = "SET_USERS"
@@ -84,7 +86,18 @@ export const setTotalCount=(totalCount) => ({type: SET_TOTAL_COUNT,totalCount})
 export const toggleIsFetching = (isFetching) => ({type:TOGGLE_IS_FETCHING, isFetching})
 export const toggleFollowProgress = (followInProgress, userId) => ({type: TOGGLE_FOLLOW_PROGRESS, followInProgress, userId})
 //ThunkCreators
-export const getUsers = (dispatch) => {
+export const getUsersThunkCreator = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true))
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(response => {
+                    dispatch (toggleIsFetching(false))
+                    dispatch(setUsers(response.data.items))
+                    dispatch(setTotalCount(response.data.totalCount))
+                }
+            )
+    }
 
 }
+
 

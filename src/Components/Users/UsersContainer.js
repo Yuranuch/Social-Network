@@ -1,6 +1,7 @@
 import React from "react"
 import {connect} from "react-redux";
 import {
+    getUsersThunkCreator,
     setCurrentPage,
     setTotalCount,
     setUsers, toggleFollowProgress,
@@ -17,14 +18,16 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         if(this.props.users.length===0) {
-            this.props.toggleIsFetching(true)
-            usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-                .then(response => {
-                    this.props.toggleIsFetching(false)
-                        this.props.setUsers(response.data.items)
-                        this.props.setTotalCount(response.data.totalCount)
-                    }
-                )
+
+            this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+            // this.props.toggleIsFetching(true)
+            // usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            //     .then(response => {
+            //         this.props.toggleIsFetching(false)
+            //             this.props.setUsers(response.data.items)
+            //             this.props.setTotalCount(response.data.totalCount)
+            //         }
+            //     )
         }
     }
 
@@ -86,6 +89,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         toggleFollowProgress: (progress, userId) => {
             dispatch(toggleFollowProgress(progress, userId))
+        },
+        getUsersThunkCreator: (currentPage, pageSize)=> {
+            dispatch(getUsersThunkCreator(currentPage, pageSize))
         }
     }
 }
