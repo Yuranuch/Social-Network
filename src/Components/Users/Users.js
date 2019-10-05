@@ -36,10 +36,11 @@ const Users =(props)=> {
             </div>
             <div>{u.name}</div>
             <div>{u.status}</div>
-            {u.follow ? <button onClick={() => {
+            {u.follow ? <button disabled={props.followInProgress} onClick={() => {
+                    props.toggleFollowProgress(true)
                     UnfollowMe(u.id)
                     .then(response=> {
-
+                        props.toggleFollowProgress(false)
                         if(response.data.resultCode===0) {
 
                             onUnFollowMe(u.id)
@@ -48,9 +49,11 @@ const Users =(props)=> {
                     })
 
                }}>UnFollow</button> :
-                <button onClick={() => {
+                <button disabled={props.followInProgress} onClick={() => {
+                    props.toggleFollowProgress(true)
                     followMe(u.id)
                         .then(response=> {
+                            props.toggleFollowProgress(false)
                             if(response.data.resultCode===0){
                                 onFollowMe(u.id)
                             }
@@ -64,4 +67,3 @@ const Users =(props)=> {
 
 export default Users
 
-// <button onClick={() => {onUnFollowMe(u.id)}}>UnFollow</button>

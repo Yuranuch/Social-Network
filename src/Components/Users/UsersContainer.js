@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {
     setCurrentPage,
     setTotalCount,
-    setUsers,
+    setUsers, toggleFollowProgress,
     toggleIsFetching,
     userFollow,
     userUnFollow
@@ -44,7 +44,10 @@ class UsersContainer extends React.Component {
 
         return <>
             {this.props.isFetching?<Preloader/>:null}
-            <Users {...this.props} onSelectPage={this.onSelectPage}/>
+            <Users {...this.props}
+                   toggleFollowProgress={this.props.toggleFollowProgress}
+                   onSelectPage={this.onSelectPage}
+            />
             </>
 
 
@@ -57,7 +60,8 @@ const mapStateToProps=(state) => {
         totalCount: state.usersPage.totalCount,
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followInProgress: state.usersPage.followInProgress
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -79,6 +83,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         toggleIsFetching: (isFetching) => {
             dispatch(toggleIsFetching(isFetching))
+        },
+        toggleFollowProgress: (progress) => {
+            dispatch(toggleFollowProgress(progress))
         }
     }
 }
