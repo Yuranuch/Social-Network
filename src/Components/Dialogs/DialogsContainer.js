@@ -5,13 +5,15 @@ import {addNewMessage, changeMessage} from "../../redux/dialog-reducer";
 import Dialogs from "./Dialogs";
 
 
+
 const mapStateToProps =(state)=> {
 
     return{
         dialogsData: state.dialogsPage.dialogsData,
         messageData: state.dialogsPage.messageData,
         newMessage: state.dialogsPage.newMessage,
-        newMessageId: state.dialogsPage.newMessageId
+        newMessageId: state.dialogsPage.newMessageId,
+        isAuth: state.auth.isAuth
     }
 }
 const mapDispatchToProps = (dispatch) => {
