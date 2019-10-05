@@ -1,46 +1,30 @@
 import React from "react"
 import {connect} from "react-redux";
 import {
+    followMeThunkCreator,
     getUsersThunkCreator,
     setCurrentPage,
     setTotalCount,
     setUsers, toggleFollowProgress,
-    toggleIsFetching,
+    toggleIsFetching, unfollowMeThunkCreator,
     userFollow,
     userUnFollow
 } from "../../redux/users-reducer";
 
 import Users from "./Users";
 import Preloader from "../common/preloader/preloader";
-import {getUsers, usersAPI} from "../../API/api";
+
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         if(this.props.users.length===0) {
-
             this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
-            // this.props.toggleIsFetching(true)
-            // usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            //     .then(response => {
-            //         this.props.toggleIsFetching(false)
-            //             this.props.setUsers(response.data.items)
-            //             this.props.setTotalCount(response.data.totalCount)
-            //         }
-            //     )
         }
     }
 
-
     onSelectPage=(pageNumber)=> {
-        this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(response=> {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalCount(response.data.totalCount)
-            })
+        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
     }
 
     render = () => {
@@ -49,6 +33,8 @@ class UsersContainer extends React.Component {
             {this.props.isFetching?<Preloader/>:null}
             <Users {...this.props}
                    toggleFollowProgress={this.props.toggleFollowProgress}
+                   unfollowMeThunkCreator={this.props.unfollowMeThunkCreator}
+                   followMeThunkCreator={this.props.followMeThunkCreator}
                    onSelectPage={this.onSelectPage}
             />
             </>
@@ -92,6 +78,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         getUsersThunkCreator: (currentPage, pageSize)=> {
             dispatch(getUsersThunkCreator(currentPage, pageSize))
+        },
+        unfollowMeThunkCreator: (userId) => {
+            dispatch(unfollowMeThunkCreator(userId))
+        },
+        followMeThunkCreator: (userId) => {
+            dispatch(followMeThunkCreator(userId))
         }
     }
 }

@@ -7,12 +7,7 @@ import {followMe, UnfollowMe, usersAPI} from "../../API/api";
 
 const Users =(props)=> {
 
-    const onFollowMe = (userId) => {
-        props.userFollow(userId)
-    }
-    const onUnFollowMe = (userId) => {
-        props.userUnFollow(userId)
-    }
+
 
     let pageCount= Math.ceil(props.totalCount/props.pageSize)
     let pages = []
@@ -37,27 +32,28 @@ const Users =(props)=> {
             <div>{u.name}</div>
             <div>{u.status}</div>
             {u.follow ? <button disabled={props.followInProgress.some(id=> id === u.id)} onClick={() => {
-                    props.toggleFollowProgress(true, u.id)
-                    usersAPI.UnfollowMe(u.id)
-                    .then(response=> {
-                        props.toggleFollowProgress(false, u.id)
-                        if(response.data.resultCode===0) {
-
-                            onUnFollowMe(u.id)
-
-                        }
-                    })
+                    props.unfollowMeThunkCreator(u.id)
+                    // props.toggleFollowProgress(true, u.id)
+                    // usersAPI.UnfollowMe(u.id)
+                    // .then(response=> {
+                    //     props.toggleFollowProgress(false, u.id)
+                    //     if(response.data.resultCode===0) {
+                    //         props.userUnFollow(u.id)
+                    //
+                    //     }
+                    // })
 
                }}>UnFollow</button> :
                 <button disabled={props.followInProgress.some(id=> id === u.id)} onClick={() => {
-                    props.toggleFollowProgress(true, u.id)
-                    usersAPI.followMe(u.id)
-                        .then(response=> {
-                            props.toggleFollowProgress(false, u.id)
-                            if(response.data.resultCode===0){
-                                onFollowMe(u.id)
-                            }
-                        })
+                    props.followMeThunkCreator(u.id)
+                    // props.toggleFollowProgress(true, u.id)
+                    // usersAPI.followMe(u.id)
+                    //     .then(response=> {
+                    //         props.toggleFollowProgress(false, u.id)
+                    //         if(response.data.resultCode===0){
+                    //             props.userFollow(u.id)
+                    //         }
+                    //     })
 
                 }}>Follow</button>}
         </div> )}

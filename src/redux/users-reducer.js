@@ -88,6 +88,7 @@ export const toggleFollowProgress = (followInProgress, userId) => ({type: TOGGLE
 //ThunkCreators
 export const getUsersThunkCreator = (currentPage, pageSize) => {
     return (dispatch) => {
+        dispatch(setCurrentPage(currentPage))
         dispatch(toggleIsFetching(true))
         usersAPI.getUsers(currentPage, pageSize)
             .then(response => {
@@ -99,5 +100,38 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     }
 
 }
+
+
+export const followMeThunkCreator =(userId) => {
+   return (dispatch) => {
+       dispatch(toggleFollowProgress(true, userId))
+       usersAPI.followMe(userId)
+           .then(response=> {
+               dispatch(toggleFollowProgress(false, userId))
+               if(response.data.resultCode===0){
+                   dispatch(userFollow(userId))
+               }
+           })
+    }
+}
+
+export const unfollowMeThunkCreator= (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProgress(true, userId))
+        usersAPI.UnfollowMe(userId)
+            .then(response=> {
+                dispatch(toggleFollowProgress(false, userId))
+                if(response.data.resultCode===0) {
+                    dispatch(userUnFollow(userId))
+
+                }
+            })
+    }
+
+}
+
+
+
+
 
 
