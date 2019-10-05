@@ -84,8 +84,9 @@ const mapDispatchToProps = (dispatch) => {
         toggleIsFetching: (isFetching) => {
             dispatch(toggleIsFetching(isFetching))
         },
-        toggleFollowProgress: (progress) => {
-            dispatch(toggleFollowProgress(progress))
+        toggleFollowProgress: (progress, userId) => {
+
+            dispatch(toggleFollowProgress(progress, userId))
         }
     }
 }
