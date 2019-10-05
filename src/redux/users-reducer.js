@@ -72,7 +72,6 @@ export const usersReducer = (state=initialState,action) => {
                     :state.followInProgress.filter(id => id != action.userId)
             }
 
-
     }
     return state
 }
