@@ -11,14 +11,14 @@ import {
 
 import Users from "./Users";
 import Preloader from "../common/preloader/preloader";
-import {getUsers} from "../../API/api";
+import {getUsers, usersAPI} from "../../API/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         if(this.props.users.length===0) {
             this.props.toggleIsFetching(true)
-            getUsers(this.props.currentPage, this.props.pageSize)
+            usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
                 .then(response => {
                     this.props.toggleIsFetching(false)
                         this.props.setUsers(response.data.items)
@@ -32,7 +32,7 @@ class UsersContainer extends React.Component {
     onSelectPage=(pageNumber)=> {
         this.props.setCurrentPage(pageNumber)
         this.props.toggleIsFetching(true)
-        getUsers(pageNumber, this.props.pageSize)
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
             .then(response=> {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -85,7 +85,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(toggleIsFetching(isFetching))
         },
         toggleFollowProgress: (progress, userId) => {
-
             dispatch(toggleFollowProgress(progress, userId))
         }
     }

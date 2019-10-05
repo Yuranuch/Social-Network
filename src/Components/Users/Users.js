@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import * as axios from "axios";
-import {followMe, UnfollowMe} from "../../API/api";
+import {followMe, UnfollowMe, usersAPI} from "../../API/api";
 
 
 const Users =(props)=> {
@@ -38,7 +38,7 @@ const Users =(props)=> {
             <div>{u.status}</div>
             {u.follow ? <button disabled={props.followInProgress.some(id=> id === u.id)} onClick={() => {
                     props.toggleFollowProgress(true, u.id)
-                    UnfollowMe(u.id)
+                    usersAPI.UnfollowMe(u.id)
                     .then(response=> {
                         props.toggleFollowProgress(false, u.id)
                         if(response.data.resultCode===0) {
@@ -51,7 +51,7 @@ const Users =(props)=> {
                }}>UnFollow</button> :
                 <button disabled={props.followInProgress.some(id=> id === u.id)} onClick={() => {
                     props.toggleFollowProgress(true, u.id)
-                    followMe(u.id)
+                    usersAPI.followMe(u.id)
                         .then(response=> {
                             props.toggleFollowProgress(false, u.id)
                             if(response.data.resultCode===0){

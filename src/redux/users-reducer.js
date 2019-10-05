@@ -82,6 +82,9 @@ export const setUsers = (users) => ({type:SET_USERS, users})
 export const setCurrentPage = (pageNumber) => ({type:SET_CURRENT_PAGE, pageNumber})
 export const setTotalCount=(totalCount) => ({type: SET_TOTAL_COUNT,totalCount})
 export const toggleIsFetching = (isFetching) => ({type:TOGGLE_IS_FETCHING, isFetching})
-
 export const toggleFollowProgress = (followInProgress, userId) => ({type: TOGGLE_FOLLOW_PROGRESS, followInProgress, userId})
+//ThunkCreators
+export const getUsers = (dispatch) => {
+
+}
 
