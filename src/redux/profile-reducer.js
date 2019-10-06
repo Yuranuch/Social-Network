@@ -70,7 +70,6 @@ export const setUserProfileThunkCreator = (userId) => {
                 }
             )
     }
-
 }
 
 export const getStatusThunkCreator = (userId) => {
