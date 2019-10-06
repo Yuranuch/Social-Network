@@ -58,7 +58,6 @@ export const addNewPost = () => ({type: ADD_NEW_POST})
 export const changePostText = (newText) => ({type:CHANGE_POST_TEXT, newText})
 export const setProfile = (profile) => ({type:SET_PROFILE, profile})
 export const setStatus = (status) => ({type:SET_STATUS, status})
-
 export const updateStatus = (status) => ({type: UPDATE_STATUS, status})
 
 //ThunkCreator
