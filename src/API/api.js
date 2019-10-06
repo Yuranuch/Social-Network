@@ -13,9 +13,7 @@ export const usersAPI = {
     authMe (){
         return instanse.get("auth/me")
     },
-    setUserProfile (userId) {
-        return instanse.get(`profile/`+userId)
-    },
+
     followMe (userId) {
         return instanse.post(`follow/${userId}`, {})
     },
@@ -23,6 +21,15 @@ export const usersAPI = {
         return instanse.delete(`follow/${userId}`)
     }
 
+}
+
+export const profileAPI ={
+    getStatus (userId) {
+        return instanse.get(`profile/status/${userId}`)
+    },
+    setUserProfile (userId) {
+        return instanse.get(`profile/`+userId)
+    },
 }
 
 
