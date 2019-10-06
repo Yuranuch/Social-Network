@@ -76,6 +76,7 @@ export const getStatusThunkCreator = (userId) => {
     return (dispatch) => {
         profileAPI.getStatus(userId)
             .then(response => {
+
                 dispatch(setStatus(response.data))
             })
     }
