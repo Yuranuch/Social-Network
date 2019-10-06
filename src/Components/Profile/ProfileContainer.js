@@ -1,11 +1,18 @@
 import React from "react"
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getStatusThunkCreator, setProfile, setStatus, setUserProfileThunkCreator} from "../../redux/profile-reducer";
-import {Redirect, withRouter} from "react-router-dom";
-import {profileAPI, setUserProfile, usersAPI} from "../../API/api";
+import {
+    getStatusThunkCreator,
+    setStatus,
+    setUserProfileThunkCreator,
+    updateStatus,
+    updateStatusThunkCreator
+} from "../../redux/profile-reducer";
+import { withRouter} from "react-router-dom";
+
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {profileAPI} from "../../API/api";
 
 class ProfileContainer extends React.Component {
 
@@ -15,22 +22,15 @@ class ProfileContainer extends React.Component {
             userId = 2
         }
         this.props.setProfile(userId)
-        // profileAPI.setUserProfile(userId)
-        //     .then(response => {
-        //             this.props.setProfile(response.data)
-        //         }
-        //     )
-
-
         this.props.getStatus(userId)
     }
 
     render() {
         return (
-
             <Profile {...this.props}
                      status={this.props.status}
                      profile={this.props.profile}
+                     updateStatus={this.props.updateStatus}
             />
         )
     }
@@ -51,7 +51,11 @@ const mapDispatchToProps = (dispatch) => {
         },
         getStatus: (userId) => {
             dispatch(getStatusThunkCreator(userId))
-        }
+        },
+        updateStatus: (status) => {
+            dispatch(updateStatusThunkCreator(status))
+        },
+
     }
 }
 

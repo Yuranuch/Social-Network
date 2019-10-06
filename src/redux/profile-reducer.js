@@ -4,6 +4,7 @@ export const CHANGE_POST_TEXT="CHANGE_POST_TEXT"
 export const ADD_NEW_POST ="ADD_NEW_POST"
 export const SET_PROFILE = "SET_PROFILE"
 export const SET_STATUS = "SET_STATUS"
+export const UPDATE_STATUS = "UPDATE_STATUS"
 
 const initialState = {
     postsData : [
@@ -44,6 +45,11 @@ export const profileReducer = (state=initialState, action) => {
                 ...state,
                 status: action.status
             }
+        case UPDATE_STATUS:
+            return {
+                ...state,
+                status: action.status
+            }
     }
     return state
 }
@@ -53,9 +59,9 @@ export const changePostText = (newText) => ({type:CHANGE_POST_TEXT, newText})
 export const setProfile = (profile) => ({type:SET_PROFILE, profile})
 export const setStatus = (status) => ({type:SET_STATUS, status})
 
+export const updateStatus = (status) => ({type: UPDATE_STATUS, status})
+
 //ThunkCreator
-
-
 export const setUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
         profileAPI.setUserProfile(userId)
@@ -67,18 +73,40 @@ export const setUserProfileThunkCreator = (userId) => {
 
 }
 
-
-
-
-
 export const getStatusThunkCreator = (userId) => {
     return (dispatch) => {
         profileAPI.getStatus(userId)
             .then(response => {
-                dispatch(setStatus(response.data))
+                dispatch(setStatus(status))
             })
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const updateStatusThunkCreator = (status) => {
+//     return (dispatch) => {
+//         profileAPI.updateStatus(status)
+//             .then(response => {
+//                 if(response.data.resultCode===0){
+//                     dispatch(setStatus(status))
+//                 }
+//             })
+//     }
+// }
+
 
 
 
