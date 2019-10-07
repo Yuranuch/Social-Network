@@ -12,9 +12,7 @@ const initialState = {
         {message:"Hello", likesCount: 5},
         {message:"Good", likesCount: 0}
     ],
-    firstPostValue: "post me",
     nextPostId: 3,
-    clearMessage: "",
     profile: null,
     status: ""
 }
@@ -24,8 +22,7 @@ export const profileReducer = (state=initialState, action) => {
         case ADD_NEW_POST: {
             return {
                 ...state,
-                postsData : [...state.postsData,{id: state.nextPostId++, message: state.firstPostValue, likesCount: 15} ],
-                firstPostValue: state.clearMessage
+                postsData : [...state.postsData,{id: state.nextPostId++, message: action.newPostText, likesCount: 15} ],
             }
         }
         case CHANGE_POST_TEXT: {
@@ -54,11 +51,10 @@ export const profileReducer = (state=initialState, action) => {
     return state
 }
 
-export const addNewPost = () => ({type: ADD_NEW_POST})
+export const addNewPost = (newPostText) => ({type: ADD_NEW_POST, newPostText})
 export const changePostText = (newText) => ({type:CHANGE_POST_TEXT, newText})
 export const setProfile = (profile) => ({type:SET_PROFILE, profile})
 export const setStatus = (status) => ({type:SET_STATUS, status})
-export const updateStatus = (status) => ({type: UPDATE_STATUS, status})
 
 //ThunkCreator
 export const setUserProfileThunkCreator = (userId) => {
