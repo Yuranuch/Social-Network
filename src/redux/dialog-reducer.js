@@ -1,12 +1,8 @@
 export const ADD_NEW_MESSAGE = "ADD_NEW_MESSAGE"
-export const CHANGE_MESSAGE = "CHANGE_MESSAGE"
-
 
 const initialState = {
     dialogsData: [
         {id: 0, name: "Yura"},
-        {id: 1, name: "Genya"},
-        {id: 1, name: "Genya"},
         {id: 1, name: "Genya"},
         {id: 2, name: "Natasha"}
     ],

@@ -1,6 +1,4 @@
 import {profileAPI} from "../API/api";
-
-export const CHANGE_POST_TEXT="CHANGE_POST_TEXT"
 export const ADD_NEW_POST ="ADD_NEW_POST"
 export const SET_PROFILE = "SET_PROFILE"
 export const SET_STATUS = "SET_STATUS"
