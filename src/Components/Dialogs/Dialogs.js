@@ -6,29 +6,27 @@ import Message from "./Message/Message";
 import {Field, reduxForm} from "redux-form";
 
 
-const Dialogs =(props)=> {
+const Dialogs = (props) => {
 
     const onAddNewMessage = (value) => {
         props.addNewMessage(value.newMessage)
     }
 
     const dialogsElements = props.dialogsData.map(d => <DialogsItem id={d.id} name={d.name}/>)
-    const messageElements = props.messageData.map (m=> <Message id={m.id} message={m.message} />)
-
-
+    const messageElements = props.messageData.map(m => <Message id={m.id} message={m.message}/>)
 
     return (
         <div>
-        <div className={styles.dialogs}>
-           <div className={styles.dialogs_items}>
-               {dialogsElements}
-           </div>
+            <div className={styles.dialogs}>
+                <div className={styles.dialogs_items}>
+                    {dialogsElements}
+                </div>
 
-            <div className={styles.messages}>
-                {messageElements}
+                <div className={styles.messages}>
+                    {messageElements}
+                </div>
+
             </div>
-
-        </div>
             <div>
                 <AddMessageReduxForm onSubmit={onAddNewMessage}/>
             </div>

@@ -1,5 +1,6 @@
 import React from "react"
 import {Field, reduxForm} from "redux-form";
+
 const Login = () => {
     let onSubmit = (formData) => {
         console.log(formData)
@@ -20,10 +21,10 @@ const LoginForm = (props) => {
                 <Field placeholder={"Login"} name={"login"} component={"input"}/>
             </div>
             <div>
-                <Field placeholder={"Password"} name={"password"} component={"input"} />
+                <Field placeholder={"Password"} name={"password"} component={"input"}/>
             </div>
             <div>
-                <Field type={"checkbox"}  name={"rememberMe"} component={"input"}/> Remember Me
+                <Field type={"checkbox"} name={"rememberMe"} component={"input"}/> Remember Me
             </div>
             <div>
                 <button>Login</button>

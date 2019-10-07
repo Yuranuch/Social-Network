@@ -14,23 +14,23 @@ export const usersAPI = {
         return instanse.get("auth/me")
     },
 
-    followMe (userId) {
+    followMe(userId) {
         return instanse.post(`follow/${userId}`, {})
     },
-    UnfollowMe (userId) {
+    UnfollowMe(userId) {
         return instanse.delete(`follow/${userId}`)
     }
 
 }
 
-export const profileAPI ={
-    setUserProfile (userId) {
-        return instanse.get(`profile/`+userId)
+export const profileAPI = {
+    setUserProfile(userId) {
+        return instanse.get(`profile/` + userId)
     },
-    getStatus (userId) {
+    getStatus(userId) {
         return instanse.get(`profile/status/${userId}`)
     },
-    updateStatus (status) {
+    updateStatus(status) {
         return instanse.put(`profile/status/`, {status: status})
     }
 }

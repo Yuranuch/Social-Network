@@ -1,14 +1,9 @@
 import React from 'react';
 import '../../App.css';
-
 import styles from './Header.module.css'
-
 import Header from "./Header";
-import * as axios from "axios";
 import {connect} from "react-redux";
 import {authMeThunkCreator, setUserData} from "../../redux/auth-reducer";
-import {authMe, usersAPI} from "../../API/api";
-
 
 class HeaderContainer extends React.Component {
 
@@ -25,7 +20,7 @@ class HeaderContainer extends React.Component {
         //     )
     }
 
-    render () {
+    render() {
         return (
             <div className={styles.header}>
                 <Header {...this.props}/>
@@ -33,15 +28,16 @@ class HeaderContainer extends React.Component {
         );
     }
 }
+
 const mapStateToProps = (state) => {
 
-    return{
+    return {
         isAuth: state.auth.isAuth,
         login: state.auth.login
     }
 }
 const mapDispatchToProps = (dispatch) => {
-    return{
+    return {
         setUserData: (id, login, email) => {
             dispatch(setUserData(id, login, email))
         },

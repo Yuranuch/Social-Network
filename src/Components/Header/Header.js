@@ -1,13 +1,11 @@
 import React from 'react';
 import '../../App.css';
-
 import styles from './Header.module.css'
 import Logo from "../../Logo";
 import {NavLink} from "react-router-dom";
 
 
-
-const Header =(props)=> {
+const Header = (props) => {
     return (
         <div className={styles.header}>
             <div>

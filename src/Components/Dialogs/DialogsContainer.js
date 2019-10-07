@@ -7,9 +7,9 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 let AuthRedirectComponent = withAuthRedirect(Dialogs)
 
-const mapStateToProps =(state)=> {
+const mapStateToProps = (state) => {
 
-    return{
+    return {
         dialogsData: state.dialogsPage.dialogsData,
         messageData: state.dialogsPage.messageData,
         newMessage: state.dialogsPage.newMessage,
@@ -19,13 +19,13 @@ const mapStateToProps =(state)=> {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewMessage: (newMessage)=> {
+        addNewMessage: (newMessage) => {
             dispatch(addNewMessage(newMessage))
         },
 
     }
 }
 
-export default connect (mapStateToProps,mapDispatchToProps)(AuthRedirectComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
 
 
