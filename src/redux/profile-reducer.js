@@ -25,12 +25,6 @@ export const profileReducer = (state=initialState, action) => {
                 postsData : [...state.postsData,{id: state.nextPostId++, message: action.newPostText, likesCount: 15} ],
             }
         }
-        case CHANGE_POST_TEXT: {
-            return {
-                ...state,
-                firstPostValue: action.newText
-            }
-        }
         case SET_PROFILE: {
             return {
                 ...state,
@@ -52,7 +46,6 @@ export const profileReducer = (state=initialState, action) => {
 }
 
 export const addNewPost = (newPostText) => ({type: ADD_NEW_POST, newPostText})
-export const changePostText = (newText) => ({type:CHANGE_POST_TEXT, newText})
 export const setProfile = (profile) => ({type:SET_PROFILE, profile})
 export const setStatus = (status) => ({type:SET_STATUS, status})
 

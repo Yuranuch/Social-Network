@@ -19,12 +19,10 @@ const mapStateToProps =(state)=> {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewMessage: ()=> {
-            dispatch(addNewMessage())
+        addNewMessage: (newMessage)=> {
+            dispatch(addNewMessage(newMessage))
         },
-        changeMessage: (newMessageText) => {
-            dispatch(changeMessage(newMessageText))
-        }
+
     }
 }
 
