@@ -20,7 +20,6 @@ export const usersAPI = {
     UnfollowMe(userId) {
         return instanse.delete(`follow/${userId}`)
     }
-
 }
 
 export const profileAPI = {
@@ -32,6 +31,15 @@ export const profileAPI = {
     },
     updateStatus(status) {
         return instanse.put(`profile/status/`, {status: status})
+    }
+}
+
+export const authAPI = {
+    login (email, password,rememberMe=false) {
+        return instanse.post("auth/login",{email, password,rememberMe})
+    },
+    logout () {
+        return instanse.delete("auth/login")
     }
 }
 
