@@ -12,12 +12,11 @@
   color: #09d3ac;
 }
 
-
 .container {
   display: flex;
 }
 .content {
-    background-color: indianred;
+    background-color: lightskyblue;
     width: 70%;
     text-align: left;
 }
