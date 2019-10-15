@@ -10,15 +10,20 @@ import Login from "./Components/Login/Login";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import {authMeThunkCreator} from "./redux/auth-reducer";
+import {appReducer, initializedApp} from "./redux/app-reducer";
+import Preloader from "./Components/common/preloader/preloader";
 
 class App extends Component {
 
     componentDidMount() {
-        this.props.authMeThunkCreator()
+        debugger
+        this.props.initializedApp()
     }
 
     render() {
-        return (
+        if(!this.props.initialized){
+            return<Preloader/>
+        }return (
             <div className="App">
                 <div className="App-Wrapper">
                     <HeaderContainer/>
@@ -41,16 +46,18 @@ class App extends Component {
     }
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = (state) => {
+    debugger
     return {
-
+        initialized: state.initial.initialized
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
+    debugger
     return {
-        authMeThunkCreator: () => {
-            dispatch(authMeThunkCreator())
+        initializedApp: () => {
+            dispatch(initializedApp())
         },
     }
 }

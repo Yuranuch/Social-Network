@@ -26,19 +26,19 @@ export const authReducer = (state=initialState, action)=>{
 export const setUserData = (id, email,login, isAuth) => ({type:SET_USER_DATA, data: {id, email,login, isAuth}})
 
 
-export const authMeThunkCreator = () => {
-    return (dispatch) => {
-        usersAPI.authMe()
+export const authMeThunkCreator = () => (dispatch) => {
+      return usersAPI.authMe()
             .then(response => {
-
+                    debugger
                     if (response.data.resultCode === 0) {
 
                         dispatch(setUserData(response.data.data.id, response.data.data.login, response.data.data.email, true))
                     }
                 }
             )
+
     }
-}
+
 
 export const loginThunk = (email, password,rememberMe) => {
    debugger
