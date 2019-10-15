@@ -7,19 +7,6 @@ import {authMeThunkCreator, logout, setUserData} from "../../redux/auth-reducer"
 
 class HeaderContainer extends React.Component {
 
-    componentDidMount() {
-        this.props.authMeThunkCreator()
-
-        // usersAPI.authMe()
-        //     .then(response => {
-        //             if (response.data.resultCode === 0) {
-        //                 let {id, login, email}=response.data.data
-        //                 this.props.setUserData(id, login, email)
-        //             }
-        //         }
-        //     )
-    }
-
 
 
     render() {
@@ -40,9 +27,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        authMeThunkCreator: () => {
-            dispatch(authMeThunkCreator())
-        },
+
         logout: () => {
             dispatch(logout())
         }
