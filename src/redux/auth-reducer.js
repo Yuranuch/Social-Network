@@ -1,5 +1,5 @@
 import {authAPI, usersAPI} from "../API/api";
-
+import {stopSubmit} from "redux-form"
 export const SET_USER_DATA = "SET_USER_DATA"
 
 
@@ -14,8 +14,7 @@ export const authReducer = (state=initialState, action)=>{
     switch (action.type) {
         case SET_USER_DATA:{
             return {
-                ...state, ...action.data,
-                isAuth: true
+                ...state, ...action.data
             }
         }
     }
@@ -24,31 +23,47 @@ export const authReducer = (state=initialState, action)=>{
     return state
 }
 
-export const setUserData = (id, login, email) => ({type:SET_USER_DATA, data: {id, login, email}})
+export const setUserData = (id, email,login, isAuth) => ({type:SET_USER_DATA, data: {id, email,login, isAuth}})
 
 
 export const authMeThunkCreator = () => {
     return (dispatch) => {
         usersAPI.authMe()
             .then(response => {
+
                     if (response.data.resultCode === 0) {
-                        let {id, login, email} = response.data.data
-                        dispatch(setUserData(id, login, email))
+
+                        dispatch(setUserData(response.data.data.id, response.data.data.login, response.data.data.email, true))
                     }
                 }
             )
     }
 }
 
-export const login = (email, password,rememberMe) => {
+export const loginThunk = (email, password,rememberMe) => {
+   debugger
     return (dispatch) => {
-        authAPI.login(email, password,rememberMe)
+        authAPI.loginMe (email, password,rememberMe)
             .then(response => {
+                debugger
                     if (response.data.resultCode === 0) {
                         dispatch(authMeThunkCreator())
+                    } else {dispatch(stopSubmit("login",{_error:"Wrong email or password"}))}
+                }
+            )
+    }
+}
+
+export const logout = () => {
+    return (dispatch) => {
+        authAPI.logout()
+            .then(response => {
+                    if (response.data.resultCode === 0) {
+                        dispatch(authMeThunkCreator(null, null, null, false))
                     }
                 }
             )
     }
 }
+
 

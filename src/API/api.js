@@ -35,7 +35,7 @@ export const profileAPI = {
 }
 
 export const authAPI = {
-    login (email, password,rememberMe=false) {
+    loginMe (email, password,rememberMe=false) {
         return instanse.post("auth/login",{email, password,rememberMe})
     },
     logout () {

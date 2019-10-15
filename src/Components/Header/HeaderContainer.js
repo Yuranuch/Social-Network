@@ -3,7 +3,7 @@ import '../../App.css';
 import styles from './Header.module.css'
 import Header from "./Header";
 import {connect} from "react-redux";
-import {authMeThunkCreator, setUserData} from "../../redux/auth-reducer";
+import {authMeThunkCreator, logout, setUserData} from "../../redux/auth-reducer";
 
 class HeaderContainer extends React.Component {
 
@@ -19,6 +19,8 @@ class HeaderContainer extends React.Component {
         //         }
         //     )
     }
+
+
 
     render() {
         return (
@@ -38,11 +40,11 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUserData: (id, login, email) => {
-            dispatch(setUserData(id, login, email))
-        },
         authMeThunkCreator: () => {
             dispatch(authMeThunkCreator())
+        },
+        logout: () => {
+            dispatch(logout())
         }
     }
 }
