@@ -7,12 +7,10 @@ export const UPDATE_STATUS = "UPDATE_STATUS"
 const initialState = {
     postsData : [
         {message:"Hi to all", likesCount: 15},
-        {message:"Hello", likesCount: 5},
-        {message:"Good", likesCount: 0}
     ],
     nextPostId: 3,
     profile: null,
-    status: ""
+    status: "1"
 }
 
 export const profileReducer = (state=initialState, action) => {

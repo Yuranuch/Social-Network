@@ -3,6 +3,7 @@ import Post from "./Post/Post";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../../common/FormsControls/FormsControls";
 import {maxLengthCreator, requiredField} from "../../../utils/validators/validators";
+import styles from "./MyPosts.module.css"
 
 const MyPosts = (props) => {
     const postsElements = props.postsData.map(p => <Post message={p.message} likesCount={p.likesCount}
@@ -13,31 +14,32 @@ const MyPosts = (props) => {
     }
     return (
         <div>
-            My Posts
-            <AddNewPostTextReduxForm onSubmit={addNewPost}/>
-            <div>
-                New Posts
+            <div className={styles.hint}>
+                create new post
             </div>
+            <AddNewPostTextReduxForm onSubmit={addNewPost}/>
             <div>
                 {postsElements}
             </div>
         </div>
     );
 }
-const maxLength10 = maxLengthCreator(10)
+const maxLength10 = maxLengthCreator(100)
 
 const AddNewPostText = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <Field
-                component={Textarea}
-                name={"newPostText"}
-                validate={[requiredField, maxLength10]}
-            />
-            <div>
-                <button>Add Post</button>
-            </div>
-        </form>
+        <div className={styles.changePost}>
+            <form onSubmit={props.handleSubmit}>
+                <Field
+                    component={Textarea}
+                    name={"newPostText"}
+                    validate={[requiredField, maxLength10]}
+                />
+                <div>
+                    <button className={styles.reusedButton}>Add Post</button>
+                </div>
+            </form>
+        </div>
     )
 }
 

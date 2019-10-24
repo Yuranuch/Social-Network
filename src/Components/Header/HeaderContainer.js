@@ -11,9 +11,9 @@ class HeaderContainer extends React.Component {
 
     render() {
         return (
-            <div className={styles.header}>
+
                 <Header {...this.props}/>
-            </div>
+
         );
     }
 }

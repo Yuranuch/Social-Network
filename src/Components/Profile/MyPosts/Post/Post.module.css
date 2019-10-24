@@ -1,8 +1,29 @@
+.postWrap {
+    margin-bottom: 10px;
+}
 .post {
+    display: flex;
 
 }
+.postItem {
+    border: 2px solid cornflowerblue;
+    display: inline-block;
+    padding-bottom: -4px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    height: 60px;
+    width: 60px;
+}
 .post img {
-    height: 50px;
-    width: 70px;
-
+    position: absolute;
+    width: 80px;
+    height: 60px
+}
+.message {
+    padding: 10px 0 0 10px;
+}
+.likes {
+    font-size: 13px;
+    color: crimson;
 }

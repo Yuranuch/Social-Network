@@ -1,10 +1,17 @@
 .navbar {
-    background-color: silver;
-    width: 30%;
+    width: 29%;
+    padding-top: 10px;
+    background-color: snow;
 }
 .item a{
-    color: white;
+    font-size: 17px;
+    color: #3070ed;
+    text-decoration: none;
 }
+.item a:hover {
+    text-decoration: underline;
+}
+
 .item a.active{
     color: gold;
 }

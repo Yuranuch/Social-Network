@@ -9,7 +9,6 @@ const ProfileInfo = (props) => {
     }
     return (
         <div>
-            Avatar+description
             <div>
                 <img src={props.profile.photos.large} />
             </div>

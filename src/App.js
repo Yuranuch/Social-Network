@@ -16,7 +16,6 @@ import Preloader from "./Components/common/preloader/preloader";
 class App extends Component {
 
     componentDidMount() {
-        debugger
         this.props.initializedApp()
     }
 
@@ -47,14 +46,12 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger
     return {
         initialized: state.initial.initialized
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    debugger
     return {
         initializedApp: () => {
             dispatch(initializedApp())

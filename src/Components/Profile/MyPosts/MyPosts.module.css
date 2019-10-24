@@ -1,0 +1,21 @@
+.hint {
+    color: darkgray;
+    font-size: 12px;
+    line-height: 1;
+}
+.reusedButton {
+    border: none;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+    background-color: cornflowerblue;
+    font-weight: 600;
+    color: white;
+    border-radius: 8px;
+    height: 20px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+.changePost {
+    margin-bottom: 10px;
+}
