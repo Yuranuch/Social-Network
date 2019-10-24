@@ -7,7 +7,7 @@
     padding: 0 5px;
 }
 
-.logo a{
+.logo a {
     margin: 0 0 0 20px;
     color: white;
     display: block;
@@ -18,17 +18,20 @@
     text-decoration: none;
 }
 
-.logo img{
+.logo img {
     width: 50px;
 }
+
 .authLogin {
-   color: white;
+    color: white;
     margin-right: 5px;
 }
+
 .autorizeBlock {
     display: flex;
     align-items: flex-start;
 }
+
 .autorizeBlock button {
     border: none;
     background-color: white;
@@ -38,9 +41,11 @@
     height: 20px;
     cursor: pointer;
 }
+
 .autorizeBlock button:hover {
     color: dimgrey;
 }
+
 .autorizeBlock a {
     border: none;
     font-size: 14px;
@@ -54,6 +59,7 @@
     cursor: pointer;
     padding: 0 10px;
 }
+
 .autorizeBlock a:hover {
     color: dimgrey;
 }
