@@ -1,14 +1,14 @@
 import React from "react"
-import Profile from "./Profile";
-import {connect} from "react-redux";
+import Profile from "./Profile"
+import {connect} from "react-redux"
 import {
     getStatusThunkCreator,
     setUserProfileThunkCreator,
     updateStatusThunkCreator
-} from "../../redux/profile-reducer";
-import { withRouter} from "react-router-dom";
-import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+} from "../../redux/profile-reducer"
+import {withRouter} from "react-router-dom"
+import {compose} from "redux"
+import {withAuthRedirect} from "../../hoc/withAuthRedirect"
 
 class ProfileContainer extends React.Component {
 
@@ -16,11 +16,10 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.autorizedId
-            if(!userId) {
+            if (!userId) {
                 this.props.history.push("/login")
             }
         }
-
 
         this.props.setProfile(userId)
         this.props.getStatus(userId)
@@ -38,7 +37,6 @@ class ProfileContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-
     return {
         profile: state.profilePage.profile,
         isAuth: state.auth.isAuth,

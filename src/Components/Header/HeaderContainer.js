@@ -1,33 +1,26 @@
-import React from 'react';
-import '../../App.css';
-import styles from './Header.module.css'
-import Header from "./Header";
-import {connect} from "react-redux";
-import {authMeThunkCreator, logout, setUserData} from "../../redux/auth-reducer";
+import React from "react"
+import "../../App.css"
+import Header from "./Header"
+import {connect} from "react-redux"
+import {logout} from "../../redux/auth-reducer"
 
 class HeaderContainer extends React.Component {
-
-
-
     render() {
         return (
-
-                <Header {...this.props}/>
-
-        );
+            <Header {...this.props}/>
+        )
     }
 }
 
 const mapStateToProps = (state) => {
-
     return {
         isAuth: state.auth.isAuth,
         login: state.auth.login
     }
 }
+
 const mapDispatchToProps = (dispatch) => {
     return {
-
         logout: () => {
             dispatch(logout())
         }

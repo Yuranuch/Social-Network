@@ -1,9 +1,9 @@
-import React from 'react';
-import '../../App.css';
-import {connect} from "react-redux";
-import {addNewMessage, changeMessage} from "../../redux/dialog-reducer";
-import Dialogs from "./Dialogs";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import React from "react"
+import "../../App.css"
+import {connect} from "react-redux"
+import {addNewMessage} from "../../redux/dialog-reducer"
+import Dialogs from "./Dialogs"
+import {withAuthRedirect} from "../../hoc/withAuthRedirect"
 
 let AuthRedirectComponent = withAuthRedirect(Dialogs)
 
@@ -22,7 +22,6 @@ const mapDispatchToProps = (dispatch) => {
         addNewMessage: (newMessage) => {
             dispatch(addNewMessage(newMessage))
         },
-
     }
 }
 

@@ -28,29 +28,30 @@ class ProfileStatus extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if(prevProps.status !== this.props.status) {
+        if (prevProps.status !== this.props.status) {
             this.setState({
                 status: this.props.status
             })
         }
     }
 
-    render () {
+    render() {
         return (
             <div className={styles.statusItem}>
-                {this.state.editMode?
+                {this.state.editMode ?
                     <input
                         value={this.state.status}
                         onBlur={this.deactivateEditeMode}
                         autoFocus={true}
                         onChange={this.onChangeStatus}
                     />
-                    :<div><span className={styles.status} onDoubleClick={this.onEditMode}>{this.props.status}</span>
+                    : <div><span className={styles.status} onDoubleClick={this.onEditMode}>{this.props.status}</span>
                         <span className={styles.hint}> - double click to change status</span>
-                </div>
+                    </div>
                 }
             </div>
         )
     }
 }
+
 export default ProfileStatus

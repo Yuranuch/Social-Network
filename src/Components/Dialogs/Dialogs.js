@@ -1,12 +1,11 @@
-import React from 'react';
-import '../../App.css';
-import styles from './Dialogs.module.css'
-import DialogsItem from "./DialogsItem/DialogsItem";
-import Message from "./Message/Message";
-import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, requiredField} from "../../utils/validators/validators";
-import {Textarea} from "../common/FormsControls/FormsControls";
-
+import React from "react"
+import "../../App.css"
+import styles from "./Dialogs.module.css"
+import DialogsItem from "./DialogsItem/DialogsItem"
+import Message from "./Message/Message"
+import {Field, reduxForm} from "redux-form"
+import {maxLengthCreator, requiredField} from "../../utils/validators/validators"
+import {Textarea} from "../common/FormsControls/FormsControls"
 
 const Dialogs = (props) => {
 
@@ -23,20 +22,20 @@ const Dialogs = (props) => {
                 <div className={styles.dialogs_items}>
                     {dialogsElements}
                 </div>
-
                 <div className={styles.messages}>
                     {messageElements}
                 </div>
-
             </div>
             <div>
                 <AddMessageReduxForm onSubmit={onAddNewMessage}/>
             </div>
         </div>
-    );
+    )
 }
+
 const maxLength10 = maxLengthCreator(10)
-export default Dialogs;
+
+export default Dialogs
 
 const AddMessageForm = (props) => {
     return (
@@ -54,4 +53,4 @@ const AddMessageForm = (props) => {
     )
 }
 
-const AddMessageReduxForm = reduxForm ({form: 'addMessage'})(AddMessageForm)
+const AddMessageReduxForm = reduxForm({form: 'addMessage'})(AddMessageForm)

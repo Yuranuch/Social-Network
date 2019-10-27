@@ -1,16 +1,15 @@
-import React from 'react';
-import Preloader from "../../common/preloader/preloader";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
-
+import React from "react"
+import Preloader from "../../common/preloader/preloader"
+import ProfileStatus from "./ProfileStatus/ProfileStatus"
 
 const ProfileInfo = (props) => {
-    if (props.profile===null) {
-       return <Preloader/>
+    if (props.profile === null) {
+        return <Preloader/>
     }
     return (
         <div>
             <div>
-                <img src={props.profile.photos.large} />
+                <img src={props.profile.photos.large}/>
             </div>
             <ProfileStatus
                 updateStatus={props.updateStatus}
@@ -18,7 +17,6 @@ const ProfileInfo = (props) => {
             />
         </div>
     )
-
 }
 
 export default ProfileInfo;

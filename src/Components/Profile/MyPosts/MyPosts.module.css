@@ -3,6 +3,7 @@
     font-size: 12px;
     line-height: 1;
 }
+
 .reusedButton {
     border: none;
     font-size: 14px;
@@ -16,6 +17,7 @@
     cursor: pointer;
     padding: 0 10px;
 }
+
 .changePost {
     margin-bottom: 10px;
 }

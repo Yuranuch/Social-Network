@@ -1,8 +1,8 @@
-import React from 'react';
-import Post from "./Post/Post";
-import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../../common/FormsControls/FormsControls";
-import {maxLengthCreator, requiredField} from "../../../utils/validators/validators";
+import React from "react"
+import Post from "./Post/Post"
+import {Field, reduxForm} from "redux-form"
+import {Textarea} from "../../common/FormsControls/FormsControls"
+import {maxLengthCreator, requiredField} from "../../../utils/validators/validators"
 import styles from "./MyPosts.module.css"
 
 const MyPosts = (props) => {
@@ -22,7 +22,7 @@ const MyPosts = (props) => {
                 {postsElements}
             </div>
         </div>
-    );
+    )
 }
 const maxLength10 = maxLengthCreator(100)
 
@@ -45,7 +45,5 @@ const AddNewPostText = (props) => {
 
 const AddNewPostTextReduxForm = reduxForm({form: 'addNewPost'})(AddNewPostText)
 
-
-
-export default MyPosts;
+export default MyPosts
 

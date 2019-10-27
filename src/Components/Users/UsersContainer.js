@@ -18,32 +18,32 @@ import Preloader from "../common/preloader/preloader";
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        if(this.props.users.length===0) {
+        if (this.props.users.length === 0) {
             this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
         }
     }
 
-    onSelectPage=(pageNumber)=> {
+    onSelectPage = (pageNumber) => {
         this.props.getUsersThunkCreator(pageNumber, this.props.pageSize)
     }
 
     render = () => {
 
         return <>
-            {this.props.isFetching?<Preloader/>:null}
+            {this.props.isFetching ? <Preloader/> : null}
             <Users {...this.props}
                    toggleFollowProgress={this.props.toggleFollowProgress}
                    unfollowMeThunkCreator={this.props.unfollowMeThunkCreator}
                    followMeThunkCreator={this.props.followMeThunkCreator}
                    onSelectPage={this.onSelectPage}
             />
-            </>
+        </>
 
 
     }
 }
 
-const mapStateToProps=(state) => {
+const mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         totalCount: state.usersPage.totalCount,
@@ -55,28 +55,10 @@ const mapStateToProps=(state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        userFollow: (userId) => {
-            dispatch(userFollow(userId))
-        },
-        userUnFollow: (userId) => {
-            dispatch(userUnFollow(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsers(users))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch (setCurrentPage(pageNumber))
-        },
-        setTotalCount: (totalCount)=> {
-            dispatch(setTotalCount(totalCount))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetching(isFetching))
-        },
         toggleFollowProgress: (progress, userId) => {
             dispatch(toggleFollowProgress(progress, userId))
         },
-        getUsersThunkCreator: (currentPage, pageSize)=> {
+        getUsersThunkCreator: (currentPage, pageSize) => {
             dispatch(getUsersThunkCreator(currentPage, pageSize))
         },
         unfollowMeThunkCreator: (userId) => {
@@ -88,5 +70,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect (mapStateToProps, mapDispatchToProps)(UsersContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
 
