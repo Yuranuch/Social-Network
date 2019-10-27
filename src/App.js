@@ -1,24 +1,21 @@
-import React, {Component} from 'react';
-import './App.css';
-import Navbar from "./Components/Navbar/Navbar";
-import UsersContainer from "./Components/Users/UsersContainer";
-import DialogsContainer from "./Components/Dialogs/DialogsContainer";
-import ProfileContainer from "./Components/Profile/ProfileContainer";
-import {Route, withRouter} from "react-router-dom";
-import HeaderContainer from "./Components/Header/HeaderContainer";
-import Login from "./Components/Login/Login";
-import {connect} from "react-redux";
-import {compose} from "redux";
-import {authMeThunkCreator} from "./redux/auth-reducer";
-import {appReducer, initializedApp} from "./redux/app-reducer";
-import Preloader from "./Components/common/preloader/preloader";
+import React, {Component} from "react"
+import "./App.css"
+import Navbar from "./Components/Navbar/Navbar"
+import UsersContainer from "./Components/Users/UsersContainer"
+import DialogsContainer from "./Components/Dialogs/DialogsContainer"
+import ProfileContainer from "./Components/Profile/ProfileContainer"
+import {Route, withRouter} from "react-router-dom"
+import HeaderContainer from "./Components/Header/HeaderContainer"
+import Login from "./Components/Login/Login"
+import {connect} from "react-redux"
+import {initializedApp} from "./redux/app-reducer"
+import Preloader from "./Components/common/preloader/preloader"
 
 class App extends Component {
 
     componentDidMount() {
         this.props.initializedApp()
     }
-
     render() {
         if(!this.props.initialized){
             return<Preloader/>
@@ -58,6 +55,5 @@ const mapDispatchToProps = (dispatch) => {
         },
     }
 }
-
 
 export default withRouter (connect(mapStateToProps,mapDispatchToProps)(App))

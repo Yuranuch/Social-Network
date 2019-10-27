@@ -1,19 +1,18 @@
-import * as axios from "axios";
+import * as axios from "axios"
 
-const instanse=axios.create({
+const instanse = axios.create({
     withCredentials: true,
     baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {"API-KEY":"2712bbc4-99c4-4494-954c-6bd0564807d4"}
+    headers: {"API-KEY": "2712bbc4-99c4-4494-954c-6bd0564807d4"}
 })
 
 export const usersAPI = {
     getUsers(currentPage, pageSize) {
         return instanse.get(`users?page=${currentPage}&count=${pageSize}`)
     },
-    authMe (){
+    authMe() {
         return instanse.get("auth/me")
     },
-
     followMe(userId) {
         return instanse.post(`follow/${userId}`, {})
     },
@@ -35,10 +34,10 @@ export const profileAPI = {
 }
 
 export const authAPI = {
-    loginMe (email, password,rememberMe=false) {
-        return instanse.post("auth/login",{email, password,rememberMe})
+    loginMe(email, password, rememberMe = false) {
+        return instanse.post("auth/login", {email, password, rememberMe})
     },
-    logout () {
+    logout() {
         return instanse.delete("auth/login")
     }
 }
